@@ -17,7 +17,7 @@ What's the point of this and what does it differently from `grep` and `| include
 
 ## How to use
 
- 1. `docker pull [rc9000/ccs-container](https://registry.hub.docker.com/u/rc9000/ccs-container/)`
+ 1. `docker pull rc9000/ccs-container`([dockerhub page](https://registry.hub.docker.com/u/rc9000/ccs-container/))
  2. run the image, e.g. like this in the foreground and with explicit port mapping: `docker run --publish-all=true -p 4200:4200 -p 4222:4222 -p 8983:8983 -i -t rc9000/ccs-container`
  3. scp your config files into the container, using *ccs_default_pw* as password: `scp -P 4222 -l ccs *.conf <docker-ip>:/opt/ccs/configs`
  4. the files will automatically be indexed after a while, but to speed things up, you can ssh into the container and run `/opt/ccs/loader/loader.sh`
