@@ -2,7 +2,12 @@
 Cisco Config Search Appliance based on Apache Solr
 
 ## Overview
-ccs-container is a ready-to-use appliance to index and search the configurations of a Cisco-based enterprise network. 
+ccs-container is a ready-to-use appliance to index and search the configurations of a Cisco-based enterprise (or home) network. 
+
+Here's an image of the user interface:
+
+![Screenshot](https://raw.githubusercontent.com/rc9000/ccs-container/master/doc/img/screenshot.png "Screenshot")
+
 It comes with the following components:
 
  * fully configured Solr fulltext search engine with a an optimized schema for config files
@@ -10,6 +15,7 @@ It comes with the following components:
  * a simple web application to explore the indexed content
  * everything is neatly wrapped up in a Docker image
  
- This is currently a work in progress, check back later for instructions etc.
+
+This is currently a work in progress, check back later for instructions etc.
  
  
