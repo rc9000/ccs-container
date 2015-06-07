@@ -21,6 +21,7 @@ RUN rm /opt/solr-5.1.0/server/solr/configsearchcore
 RUN ln -s /opt/ccs/configsearchcore /opt/solr-5.1.0/server/solr/configsearchcore
 RUN ln -s /opt/solr-5.1.0 /opt/ccs/solr
 RUN cd ${CCS}/ember/ccsui ; sudo -u ccs /usr/local/bin/npm install ; sudo -u ccs /usr/local/bin/bower install
+RUN usermod -a -G sudo ccs
 
 EXPOSE 4200
 EXPOSE 4222
