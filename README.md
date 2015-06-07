@@ -1,5 +1,5 @@
 # ccs-container
-Cisco Config Search Appliance based on Apache Solr
+Cisco Config Search Appliance (Docker Image) based on Apache Solr
 
 ## Overview
 ccs-container is a ready-to-use Docker image to index and search the configurations of a Cisco-based enterprise (or home) network. 
