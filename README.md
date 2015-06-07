@@ -31,6 +31,7 @@ __WARNING II: this is a just for fun sunday afternoon project and was never used
 ## Qs that might become FA
 
  1. *can I run this without docker?* Yes, just clone to a local directory on your target system and do the equivalent prerequisites listed in the Dockerfile. Confirmed to work on OS X and Linux.
+ 2. *why don't you integrate Rancid so it finds the config files on its own?* Great idea - pull requests are very welcome.
 
 
  
