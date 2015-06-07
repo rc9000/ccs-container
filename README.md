@@ -23,17 +23,12 @@ What's the point of this and what does it differently from `grep` and `| include
  4. the files will automatically be indexed after a while, but to speed things up, you can ssh into the container and run `/opt/ccs/loader/loader.sh`<br>
  5. navigate browser to the frontend at `http://<docker-ip>:4200/configsearch`
  
-__WARNING: this container contains unsecured server software (node.js and Solr) and it exposes all config files too the public without authentication. Only operate it in a closed network environment or secure the servers by configuration or external measures.__
+__WARNING I: this container contains unsecured server software (node.js and Solr) and it exposes all config files too the public without authentication. Only operate it in a closed network environment or secure the servers by configuration or external measures.__
+
+__WARNING II: this is a just for fun sunday afternoon project and was never used by anyone in production. Great if it works for you, but please keep expectations low :)__
 
 
 
-## Internals
-
- * fully configured Solr fulltext search engine with a an optimized schema for config files
- * a configuration parser to transform the config files from plain text into a hierarchical XML document
- * a simple web application to explore the indexed content
- * everything is neatly wrapped up in a Docker image
- 
 
  
  
