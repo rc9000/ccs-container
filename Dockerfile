@@ -10,7 +10,7 @@ RUN echo 'ccs:ccs_default_pw' | chpasswd
 RUN mkdir -p ${CCS} /var/run/sshd
 
 RUN wget -nv -O - http://www.networkz.ch/solr-5.1.0-ccs-customized.tar.gz | tar xzf - -C "/opt"
-RUN apt-get install -y python-setuptools python-dev openssh-server
+RUN apt-get install -y python-setuptools python-dev openssh-server vim
 RUN easy_install -U ciscoconfparse lxml
 
 COPY . ${CCS}
