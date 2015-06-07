@@ -1,0 +1,32 @@
+<h1>{{appName}}</h1>
+
+<form>
+{{input size=80 type="text" value=q placeholder='192.168.2.55, FastEthernet0/5, "vlan 220" etc...'}}
+{{view "select" content=doctypes value=selectedDoctype}}
+don't match substrings {{input type="checkbox" checked=exact}}
+
+<button {{action 'query'}}>go</button>
+</form>
+
+
+<table id="list" class="table table-hover table-striped">
+<thead><tr>
+    <th>id</th>
+    <th>type</th>
+    <th>match</th>
+   </tr>
+</thead>
+<tbody>
+{{#each d in solrResponse.response.docs}}
+  <tr>
+    <td>{{#link-to 'configshow' d.id}} {{d.id}} {{/link-to}}</td>
+    <td>{{d.doctype}}<p class="small">{{{d.more}}}</p></td>
+    <td class="mono">{{{d.hl}}} </td>
+  </tr>
+{{/each}}
+</tbody>
+</table>
+
+<p id="countString">
+{{countString}}
+</p>

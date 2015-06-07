@@ -1,0 +1,9 @@
+/frisby-tests/node_modules
+/solr
+/solr-5.1.0
+/configsearchcore/data/index
+/configsearchcore/data/tlog
+/xml/*.xml
+*~
+*.swp
+*.swo

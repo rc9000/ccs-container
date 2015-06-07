@@ -1,0 +1,20 @@
+body {
+    margin-left: 3em;
+}
+
+em {
+    background-color: yellow;
+}
+
+.mono {
+    font-family:  "Courier New", Courier, monospace;
+}
+
+hr {
+    display: block;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+    margin-left: auto;
+    margin-right: auto;
+    border-width: 4px;
+} 

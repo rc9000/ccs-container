@@ -1,0 +1,80 @@
+<schema name="minimal" version="1.5">
+    <types>
+        <fieldType name="string" class="solr.StrField"/>
+
+        <fieldType name="configtext" class="solr.TextField" >
+            <analyzer type="index">
+                <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+                <filter class="solr.LowerCaseFilterFactory"/>
+                <filter class="solr.EdgeNGramFilterFactory" minGramSize="1" maxGramSize="100" /> 
+            </analyzer>
+            <analyzer type="query">
+                <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+                <filter class="solr.LowerCaseFilterFactory"/>
+            </analyzer>
+        </fieldType>
+
+        <fieldType name="configtext_wsonly" class="solr.TextField" >
+            <analyzer type="index">
+                <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+                <filter class="solr.LowerCaseFilterFactory"/>
+            </analyzer>
+            <analyzer type="query">
+                <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+                <filter class="solr.LowerCaseFilterFactory"/>
+            </analyzer>
+        </fieldType>
+
+        <!-- currently unused, this type could be used to enable end-of-word matching (e.g. 0/5 finds FastEthernet0/5) -->
+        <fieldType name="configtext_rev" class="solr.TextField" >
+            <analyzer type="index">
+                <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+                <filter class="solr.LowerCaseFilterFactory"/>
+                <filter class="solr.ReverseStringFilterFactory"/>
+                <filter class="solr.EdgeNGramFilterFactory" minGramSize="1" maxGramSize="100" /> 
+            </analyzer>
+            <analyzer type="query">
+                <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+                <filter class="solr.LowerCaseFilterFactory"/>
+                <filter class="solr.ReverseStringFilterFactory"/>
+            </analyzer>
+        </fieldType>
+
+        <!-- currently unused, this type could be used to add a field with only numbers or ips for better matching on them -->
+        <fieldType name="iponly" class="solr.TextField">
+             <analyzer type="index">
+                 <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="([^0-9./])" replacement=" "/>
+                 <tokenizer class="solr.PatternTokenizerFactory" pattern="(,|[^0-9]\.[^0-9]|\s+|_|/)"/>
+                 <filter class="solr.LowerCaseFilterFactory"/>
+             </analyzer>
+             <analyzer type="query">
+                 <tokenizer class="solr.PatternTokenizerFactory" pattern="(,|[^0-9]\.[^0-9]|\s+|_|/)"/>
+                 <filter class="solr.LowerCaseFilterFactory"/>
+             </analyzer>
+        </fieldType>
+
+    </types>
+
+    <fields>
+        <dynamicField name="*" type="string" indexed="true" stored="true" />
+
+        <field name="id" type="string" indexed="true" stored="true" />
+        <field name="content" type="configtext" indexed="true" stored="true" termVectors="true" termPositions="true" termOffsets="true" />
+        <field name="content_wsonly" type="configtext_wsonly" indexed="true" stored="true" termVectors="true" termPositions="true" termOffsets="true"/>
+        <copyField source="content" dest="content_wsonly"/>
+
+        <!--
+        <field name="ipaddresses" type="iponly" indexed="true" stored="true" termVectors="true" termPositions="true" termOffsets="true"/>
+        <field name="content_rev" type="configtext_rev" indexed="true" stored="true" termVectors="true" termPositions="true" termOffsets="true"/>
+        <copyField source="content" dest="ipaddresses"/>
+        <copyField source="content" dest="content_rev"/>
+        -->
+
+
+    </fields>
+    <uniqueKey>id</uniqueKey>
+    <defaultSearchField>content</defaultSearchField> 
+
+
+
+</schema> 
