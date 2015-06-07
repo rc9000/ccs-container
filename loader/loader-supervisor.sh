@@ -7,6 +7,9 @@ SLEEP=${1:-600}
 
 echo "refreshing configs every $SLEEP seconds"
 
+# give solr some time to become ready on first launch
+sleep 120 
+
 while true ; do
     /opt/ccs/loader/loader.sh
     sleep $SLEEP
