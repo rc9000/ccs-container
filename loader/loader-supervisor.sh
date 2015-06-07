@@ -5,6 +5,8 @@
 
 SLEEP=${1:-600}
 
+echo "refreshing configs every $SLEEP seconds"
+
 while true ; do
     /opt/ccs/loader/loader.sh
     sleep $SLEEP
