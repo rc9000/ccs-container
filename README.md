@@ -23,7 +23,7 @@ What's the point of this and what does it differently from `grep` and `| include
  4. the files will automatically be indexed after a while, but to speed things up, you can ssh into the container and run `/opt/ccs/loader/loader.sh`
  5. navigate browser to the frontend at `http://<docker-ip>:4200/configsearch`
  
-
+__WARNING: this container contains unsecured server software (node.js and Solr) and it exposes all config files too the public without authentication. Only operate it in a closed network environment or secure the servers by configuration or external measures.__
 
 ## Internals
 
