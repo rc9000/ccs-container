@@ -12,7 +12,7 @@ export default Ember.Route.extend({
     qData.q = 'id:"'+params.id+'"';
 
     $.ajax({
-         url:    "http://localhost:8983/solr/configsearchcore/select?wt=json&fl=content",
+         url:    "http://"+window.location.hostname+":8983/solr/configsearchcore/select?wt=json&fl=content",
          type: "GET",
          data: qData,
          async: false,
@@ -37,20 +37,3 @@ export default Ember.Route.extend({
 
 
 
-/*
-    $.ajax({
-         url:    "http://localhost:8983/solr/configsearchcore/select?wt=json&fl=content",
-         type: "GET",
-         data: qData,
-         async: false,
-         dataType: 'json'
-
-    }).then(function(response) {
-       
-         var config = response.response.docs[0].content;
-         config = config.replace(/\n  /g, '\n&nbsp;&nbsp;');
-         config = config.replace(/\n /g, '\n&nbsp;');
-         config = config.replace(/(?:\r\n|\r|\n)/g, '<br />');
-         model.config = config;
-    });
-    */

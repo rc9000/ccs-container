@@ -38,7 +38,7 @@ export default Ember.Controller.extend({
            qData.fq = 'doctype:"'+self.get("selectedDoctype")+'"';
 
            $.ajax({
-                url:    "http://localhost:8983/solr/configsearchcore/select?"+
+                url:    "http://"+window.location.hostname+":8983/solr/configsearchcore/select?"+
                         "fq=doctype%3A%22full+config%22&wt=json&start=0&rows=100&"+
                         "hl=true&hl.snippets=4&hl.alternateField=content&hl.maxAlternateFieldLength=100",
                 type: "GET",
