@@ -7,6 +7,7 @@ RUN apt-get install -y openjdk-7-jre unzip sudo supervisor apache2
 RUN npm install -g ember-cli@0.2.3 ; npm install -g bower
 RUN useradd -s /bin/bash -U -m -d /home/ccs ccs
 RUN echo 'ccs:ccs_default_pw' | chpasswd
+RUN echo "root:root_default_pw" | chpasswd
 RUN mkdir -p ${CCS} /var/run/sshd
 
 RUN wget -nv -O - http://www.networkz.ch/solr-5.1.0-ccs-customized.tar.gz | tar xzf - -C "/opt"
