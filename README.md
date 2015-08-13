@@ -15,7 +15,11 @@ What's the point of this and what does it differently from `grep` and `| include
  * it has shiny colors (well, at least one, yellow) and does not require any knowledge of CLI tools
  * search your whole network in seconds from one single point of entry, no need to log into devices
 
-## How to use
+## Online Demo
+
+Depending on the hosting bill it is racking up, a demo might or might not be available at [ccs.kloud.networkz.ch:9900/configsearch](http://ccs.kloud.networkz.ch:9900/configsearch). Use *ccs/Django Reinhardt* to log in.
+
+## How to install in your environment
 
  1. `docker pull rc9000/ccs-container`([dockerhub page](https://registry.hub.docker.com/u/rc9000/ccs-container/))<br>
  2. run the image, e.g. like this in the foreground and with explicit port mapping:<br> `docker run -d  -p 9900:9900 -p 4222:4222  rc9000/ccs-container`<br>
