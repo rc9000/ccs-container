@@ -1,3 +1,5 @@
+import Ember from 'ember';
+
 export default Ember.Controller.extend({
 
     appName: 'Cisco Configsearch Appliance',
@@ -38,7 +40,7 @@ export default Ember.Controller.extend({
            qData.fq = 'doctype:"'+self.get("selectedDoctype")+'"';
 
            $.ajax({
-                url:    "http://"+window.location.hostname+":8983/solr/configsearchcore/select?"+
+                url:    "http://"+window.location.hostname+":9900/solr/configsearchcore/select?"+
                         "&wt=json&start=0&rows=100&"+
                         "hl=true&hl.snippets=4&hl.alternateField=content&hl.maxAlternateFieldLength=100",
                 type: "GET",
@@ -69,7 +71,7 @@ export default Ember.Controller.extend({
 
                 if (response.response.numFound > 100){
                     self.set('countString', "showing first 100 of " + response.response.numFound + " results" );
-                }else if (response.response.numFound == 0) {
+                }else if (response.response.numFound === 0) {
                     self.set('countString', "no results" );
                 }else{
                     self.set('countString', response.response.numFound + " results");
