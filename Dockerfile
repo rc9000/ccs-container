@@ -3,7 +3,7 @@ FROM node:0.12.4
 ENV CCS /opt/ccs
 
 RUN apt-get update
-RUN apt-get install -y openjdk-7-jre unzip sudo supervisor
+RUN apt-get install -y openjdk-7-jre unzip sudo supervisor apache2
 RUN npm install -g ember-cli@0.2.3 ; npm install -g bower
 RUN useradd -s /bin/bash -U -m -d /home/ccs ccs
 RUN echo 'ccs:ccs_default_pw' | chpasswd
@@ -23,8 +23,7 @@ RUN ln -s /opt/solr-5.1.0 /opt/ccs/solr
 RUN cd ${CCS}/ember/ccsui ; sudo -u ccs /usr/local/bin/npm install ; sudo -u ccs /usr/local/bin/bower install
 RUN usermod -a -G sudo ccs
 
-EXPOSE 4200
 EXPOSE 4222
-EXPOSE 8983
+EXPOSE 9900
 
 CMD ["/usr/bin/supervisord"]
