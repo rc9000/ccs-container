@@ -1,3 +1,5 @@
+import Ember from 'ember';
+
 export default Ember.Controller.extend({
 
     appName: 'Cisco Configsearch Appliance',
@@ -69,7 +71,7 @@ export default Ember.Controller.extend({
 
                 if (response.response.numFound > 100){
                     self.set('countString', "showing first 100 of " + response.response.numFound + " results" );
-                }else if (response.response.numFound == 0) {
+                }else if (response.response.numFound === 0) {
                     self.set('countString', "no results" );
                 }else{
                     self.set('countString', response.response.numFound + " results");
