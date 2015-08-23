@@ -11,9 +11,9 @@ It provides this user interface:
 What's the point of this and what does it differently from `grep` and `| include`? 
 
  * the index is hierachical, so you can search for configuration items only in e.g. interfaces 
- * the *don't match substring* option allows to control wether `192.168.1.2` will turn up results for `192.168.1.{20-29,200-255}` or not
  * it has shiny colors (well, at least one, yellow) and does not require any knowledge of CLI tools
  * search your whole network in seconds from one single point of entry, no need to log into devices
+ * [n-gram](https://en.wikipedia.org/wiki/N-gram)-based, allows using an index to find arbitrary fragments even inside of words 
 
 ## Online Demo
 
@@ -37,6 +37,4 @@ Depending on the hosting bill it is racking up, a demo might or might not be ava
  4. *how can I change the ssh password?* Login with ssh into the image, then use the passwd utility as usual.
 
 
-
- 
  

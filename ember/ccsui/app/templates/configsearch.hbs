@@ -1,9 +1,8 @@
 <h1>{{appName}}</h1>
 
 <form>
-{{input size=80 type="text" value=q placeholder='192.168.2.55, FastEthernet0/5, "vlan 220" etc...'}}
+{{input size=80 type="text" value=q placeholder='10.0.100.1, GigabitEthernet1/2, vlan 20 etc...'}}
 {{view "select" content=doctypes value=selectedDoctype}}
-don't match substrings {{input type="checkbox" checked=exact}}
 
 <button {{action 'query'}}>go</button>
 </form>
