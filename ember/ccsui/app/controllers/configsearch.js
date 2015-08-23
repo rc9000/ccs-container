@@ -31,7 +31,7 @@ export default Ember.Controller.extend({
 
            var qData = { 
                "defType": 'edismax',
-               "q":  q, 
+               "q":  "content:" + q, 
                "hl.fl": 'content',
                "mm": '100%',
            };
