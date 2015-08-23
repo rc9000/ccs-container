@@ -2,7 +2,6 @@
     <types>
         <fieldType name="string" class="solr.StrField"/>
 
-        <!--
         <fieldType name="configtext_trigram" class="solr.TextField" >
             <analyzer type="index">
                 <tokenizer class="solr.PatternTokenizerFactory" pattern="\R" group="-1"/> 
@@ -11,20 +10,6 @@
             </analyzer>
             <analyzer type="query">
                 <tokenizer class="solr.NGramTokenizerFactory" minGramSize="3" maxGramSize="3"/>
-                <filter class="solr.LowerCaseFilterFactory"/>
-            </analyzer>
-        </fieldType>
-        -->
-
-        <fieldType name="configtext_trigram" class="solr.TextField" >
-                    <analyzer type="index">
-                <tokenizer class="solr.PatternTokenizerFactory" pattern="\R" group="-1"/> <!-- note: \R works only in Java 8+ -->
-                <filter class="solr.NGramFilterFactory" minGramSize="3" maxGramSize="3"/>
-                <filter class="solr.LowerCaseFilterFactory"/>
-            </analyzer>
-            <analyzer type="query">
-                <tokenizer class="solr.PatternTokenizerFactory" pattern="\R" group="-1"/> <!-- note: \R works only in Java 8+ -->
-                <filter class="solr.NGramFilterFactory" minGramSize="3" maxGramSize="3"/>
                 <filter class="solr.LowerCaseFilterFactory"/>
             </analyzer>
         </fieldType>

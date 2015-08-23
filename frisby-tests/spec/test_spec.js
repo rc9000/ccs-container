@@ -23,7 +23,7 @@ frisby.create('Find substring description in some docs')
 .toss();
 
 frisby.create('Find substring vlan 20 in core2')
-  .get(coreUrl + '/select?q=content%3Avlan+20&fq=doctype%3A%22full+config%22&wt=json&indent=true&debugQuery=true&defType=edismax&mm=100%25')
+  .get(coreUrl + '/select?q=content%3Avlan%5c+20&fq=doctype%3A%22full+config%22&wt=json&indent=true&debugQuery=true&defType=edismax&mm=100%25')
   .expectStatus(200)
   .expectJSON({
     response: {
@@ -35,35 +35,5 @@ frisby.create('Find substring vlan 20 in core2')
 
 
 
-/*
-frisby.create('Get IP address substring')
-  .get(coreUrl + '/select?q=content%3A255.255.255.254&fq=doctype%3A%22full+config%22&wt=json')
-  .expectStatus(200)
-  .expectJSON({
-    response: {
-      numFound: 2
-    }
-  })
-.toss();
 
-frisby.create('Get beginning of word')
-  .get(coreUrl + '/select?q=content%3Aserial0&fq=doctype%3A%22full+config%22&wt=json')
-  .expectStatus(200)
-  .expectJSON({
-    response: {
-      numFound: 2
-    }
-  })
-.toss();
-
-frisby.create('Get exact match from content_wsonly')
-  .get(coreUrl + '/select?q=content_wsonly%3Aserial0%2F0&fq=doctype%3A%22full+config%22&wt=json')
-  .expectStatus(200)
-  .expectJSON({
-    response: {
-      numFound: 2
-    }
-  })
-.toss();
-*/
 

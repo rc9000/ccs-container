@@ -27,6 +27,7 @@ export default Ember.Controller.extend({
            console.log('query', self.get('q'));
 
            var q = self.get("q");
+           q = q.replace(/ /g, '\\ '); // space needs escaping or edismax will break up q
 
 
            var qData = { 
@@ -41,7 +42,7 @@ export default Ember.Controller.extend({
            $.ajax({
                 url:    "http://"+window.location.hostname+":9900/solr/configsearchcore/select?"+
                         "&wt=json&start=0&rows=100&"+
-                        "hl=true&hl.snippets=4&hl.alternateField=content&hl.maxAlternateFieldLength=100",
+                        "hl=true&hl.snippets=4",
                 type: "GET",
                 data: qData,
                 dataType: 'json'
