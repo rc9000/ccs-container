@@ -28,11 +28,12 @@ export default Ember.Controller.extend({
 
            var q = self.get("q");
 
+
            var qData = { 
-               "q": 'content_trigram:' + q + '', 
-               "hl.fl": 'content_trigram',
-               "mm": '100%',
                "defType": 'edismax',
+               "q":  q, 
+               "hl.fl": 'content',
+               "mm": '100%',
            };
 
            qData.fq = 'doctype:"'+self.get("selectedDoctype")+'"';
