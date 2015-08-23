@@ -10,9 +10,9 @@ export default Ember.Controller.extend({
     exact: false,
 
     // some common queries, enabling here will autoload the result 
-    //q: "172.18.195.5", 
-    //q: "0/5", 
-    //q: "fastethernet0/2", 
+    //q: description should match descripiton but not encryption (mm=100% edismax ok?)
+    //q: vlan 2 should give some results
+    //q: 201 should match some configs and url texts
     q: "", 
 
     init: function() {
@@ -27,22 +27,22 @@ export default Ember.Controller.extend({
            console.log('query', self.get('q'));
 
            var q = self.get("q");
-           var exact = self.get("exact");
-           var qData = { "q": "content:" + q +  " or content_rev:" + q, "hl.fl": 'content'};
+           q = q.replace(/ /g, '\\ '); // space needs escaping or edismax will break up q
 
-           if (exact){
-                console.log("using content_wsonly");
-                qData = { "q": "content_wsonly:" + q, "hl.fl": 'content_wsonly'};
-                  
-           } 
 
+           var qData = { 
+               "defType": 'edismax',
+               "q":  "content:" + q, 
+               "hl.fl": 'content',
+               "mm": '100%',
+           };
 
            qData.fq = 'doctype:"'+self.get("selectedDoctype")+'"';
 
            $.ajax({
                 url:    "http://"+window.location.hostname+":9900/solr/configsearchcore/select?"+
                         "&wt=json&start=0&rows=100&"+
-                        "hl=true&hl.snippets=4&hl.alternateField=content&hl.maxAlternateFieldLength=100",
+                        "hl=true&hl.snippets=4",
                 type: "GET",
                 data: qData,
                 dataType: 'json'
