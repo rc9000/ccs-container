@@ -15,10 +15,14 @@ What's the point of this and what does it differently from `grep` and `| include
  * it has shiny colors (well, at least one, yellow) and does not require any knowledge of CLI tools
  * search your whole network in seconds from one single point of entry, no need to log into devices
 
-## How to use
+## Online Demo
+
+Depending on the hosting bill it is racking up, a demo might or might not be available at [ccs.kloud.networkz.ch:9900/configsearch](http://ccs.kloud.networkz.ch:9900/configsearch). Use *ccs/Django Reinhardt* to log in.
+
+## How to install in your environment
 
  1. `docker pull rc9000/ccs-container`([dockerhub page](https://registry.hub.docker.com/u/rc9000/ccs-container/))<br>
- 2. run the image, e.g. like this in the foreground and with explicit port mapping:<br> `docker run -d  -p 9900:9900 -p 4222:4222  rc9000/ccs-container`<br>
+ 2. run the image with ports 9900 and 4222 mapped:<br> `docker run -d  -p 9900:9900 -p 4222:4222  rc9000/ccs-container`<br>
  3. scp your config files into the container, using *ccs_default_pw* as password:<br> `scp -P 4222 -l ccs *.conf <docker-ip>:/opt/ccs/configs`<br>How the config files are gathered is up to you, popular options are exports from Ciscoworks, Prime etc. or Open solutions like [rancid](http://www.shrubbery.net/rancid/) or [gerty](https://github.com/ssinyagin/gerty). If you don't have any config files at hand, a few examples will be automatically loaded on startup.<br>
  4. the files will automatically be indexed after a while, but to speed things up, you can ssh into the container and run `/opt/ccs/loader/loader.sh`<br>
  5. navigate browser to the frontend at `http://<docker-ip>:9900/configsearch`
