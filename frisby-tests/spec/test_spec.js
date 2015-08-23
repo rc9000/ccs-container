@@ -32,6 +32,14 @@ frisby.create('Find substring vlan 20 in core2')
   })
 .toss();
 
+// TODO: although there are even 2 real matches, the highlighter returns more. We'd need to re-inspect hl results and remove entries
+// that don't match the full q (because once the q with mm100% matched, additional trigrams will be matches as well
+frisby.create('Test correct highlighting for 10.10.100.1')
+  .get(coreUrl + '/select?q=content%3A10.10.100.1&fq=doctype%3A%22full+config%22+AND+id%3Aios-xr&wt=json&indent=true&debugQuery=true&defType=edismax&mm=100%25&hl=true&hl.fl=content&hl.simple.pre=%3Cem%3E&hl.simple.post=%3C%2Fem%3E&hl.snippets=4')
+  .expectStatus(200)
+  .expectJSONLength('highlighting.ios-xr.content', 4)
+.toss();
+
 
 
 
