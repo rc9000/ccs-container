@@ -63,13 +63,6 @@
         <field name="content_wsonly" type="configtext_wsonly" indexed="true" stored="true" termVectors="true" termPositions="true" termOffsets="true"/>
         <copyField source="content" dest="content_wsonly"/>
 
-        <!--
-        <field name="ipaddresses" type="iponly" indexed="true" stored="true" termVectors="true" termPositions="true" termOffsets="true"/>
-        <field name="content_rev" type="configtext_rev" indexed="true" stored="true" termVectors="true" termPositions="true" termOffsets="true"/>
-        <copyField source="content" dest="ipaddresses"/>
-        <copyField source="content" dest="content_rev"/>
-        -->
-
 
     </fields>
     <uniqueKey>id</uniqueKey>
