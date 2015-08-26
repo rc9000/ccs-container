@@ -4,8 +4,7 @@
 
         <fieldType name="configtext_trigram" class="solr.TextField" >
             <analyzer type="index">
-                <tokenizer class="solr.PatternTokenizerFactory" pattern="(?>\r\n|[\r\n])" group="-1"/>  <!-- split by line breaks, ie. \R if we had JRE8 -->
-                <filter class="solr.NGramFilterFactory" minGramSize="3" maxGramSize="3"/>
+                <tokenizer class="solr.NGramTokenizerFactory" minGramSize="3" maxGramSize="3"/>
                 <filter class="solr.LowerCaseFilterFactory"/>
             </analyzer>
             <analyzer type="query">
@@ -14,6 +13,19 @@
             </analyzer>
         </fieldType>
 
+        <!--
+        <fieldType name="configtext_trigram" class="solr.TextField" >
+            <analyzer type="index">
+                <tokenizer class="solr.PatternTokenizerFactory" pattern="(?>\r\n|[\r\n])" group="-1"/> 
+                <filter class="solr.NGramFilterFactory" minGramSize="3" maxGramSize="3"/>
+                <filter class="solr.LowerCaseFilterFactory"/>
+            </analyzer>
+            <analyzer type="query">
+                <tokenizer class="solr.NGramTokenizerFactory" minGramSize="3" maxGramSize="3"/>
+                <filter class="solr.LowerCaseFilterFactory"/>
+            </analyzer>
+        </fieldType>
+        -->
 
     </types>
 
