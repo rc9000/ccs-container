@@ -1605,7 +1605,7 @@
                        class="solr.highlight.BreakIteratorBoundaryScanner">
         <lst name="defaults">
           <!-- type should be one of CHARACTER, WORD(default), LINE and SENTENCE -->
-          <str name="hl.bs.type">WORD</str>
+          <str name="hl.bs.type">LINE</str>
           <!-- language and country are used when constructing Locale object.  -->
           <!-- And the Locale object will be used when getting instance of BreakIterator -->
           <str name="hl.bs.language">en</str>
